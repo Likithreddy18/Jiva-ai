@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiva-ai - AI-Powered Decision Systems for Perishable Inventory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0e8a78;
+            --primary-light: #e8f5f3;
+            --primary-dark: #075e52;
+            --secondary: #1c2b49;
+            --light: #ffffff;
+            --gray: #64748b;
+            --gray-light: #f8fafc;
+            --gray-lighter: #f1f5f9;
+            --success: #10b981;
+            --success-light: #ecfdf5;
+            --danger: #dc2626;
+            --danger-light: #fecaca;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1506617420156-8e4536971650?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-white {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-white:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn-outline-white {
+            border: 1px solid white;
+            color: white;
+        }
+        
+        .btn-outline-white:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+        
+        .stat-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .stat-description {
+            color: var(--secondary);
+        }
+        
+        /* Vision Section */
+        .vision {
+            background-color: var(--gray-light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Problems Section */
+        .problems {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .problems-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .problems-content {
+            max-width: 500px;
+        }
+        
+        .problems-list {
+            margin-top: 30px;
+        }
+        
+        .problem-item {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 35px;
+        }
+        
+        .problem-icon {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            background-color: var(--danger-light);
+            color: var(--danger);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .problem-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .problem-description {
+            color: var(--gray);
+        }
+        
+        .problems-image {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problems-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .waste-badge {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            text-align: center;
+        }
+        
+        .waste-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--danger);
+        }
+        
+        .waste-label {
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 0;
+            background-color: var(--gray-light);
+        }
+        
+        .process {
+            margin-top: 60px;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .process-row {
+            margin-bottom: 60px;
+        }
+        
+        .process-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            height: 100%;
+        }
+        
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .process-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .process-description {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .process-metrics {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--primary);
+        }
+        
+        .process-metrics span {
+            color: var(--gray);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: var(--gray-lighter);
+            border-radius: 10px;
+            padding: 30px;
+            height: 100%;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .feature-description {
+            color: var(--secondary);
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background-color: var(--gray-light);
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            align-items: center;
+            margin-top: 50px;
+        }
+        
+        .benefits-image {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefits-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .benefits-list {
+            max-width: 500px;
+        }
+        
+        .benefit-item {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 35px;
+        }
+        
+        .benefit-icon {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            background-color: var(--success-light);
+            color: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .benefit-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .benefit-description {
+            color: var(--gray);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo-icon {
+            width: 36px;
+            height: 36px;
+            margin-right: 10px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .footer-tagline {
+            color: #a1a1aa;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #a1a1aa;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            color: #a1a1aa;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .footer-bottom {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #a1a1aa;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .problems-container,
+            .benefits-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .problems-image,
+            .benefits-image {
+                margin-top: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .nav-links li {
+                margin: 0 15px 10px;
+            }
+            
+            .cta-buttons {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .stat-value {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-buttons,
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">J</div>
+                    Jiva-ai
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                </ul>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-outline">Contact Us</a>
+                    <a href="#demo" class="btn btn-primary">Request Demo</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI-Powered Decision Systems for Perishable Inventory</h1>
+                <p>Reduce waste, optimize inventory, and increase profitability with Jiva's intelligent supply chain solutions for grocery chains.</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn btn-white">Request a Demo</a>
+                    <a href="#how-it-works" class="btn btn-outline-white">Learn How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value">30%</div>
+                    <div class="stat-label">Reduction in Food Waste</div>
+                    <p class="stat-description">Our AI system helps grocers significantly reduce waste from perishable goods.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">25%</div>
+                    <div class="stat-label">Increased Profit Margins</div>
+                    <p class="stat-description">Optimize inventory to maximize sales while reducing markdowns and waste.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">94%</div>
+                    <div class="stat-label">Prediction Accuracy</div>
+                    <p class="stat-description">Our multi-agent AI system provides highly accurate demand forecasting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision">
+        <div class="container">
+            <h2 class="section-title">Our Vision</h2>
+            <p class="section-subtitle">To be the AI brain for grocery operations, enabling real-time decision-making that drastically reduces food waste, improves inventory routing, and enhances profitability—particularly for perishable goods.</p>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems" id="problems">
+        <div class="container">
+            <div class="problems-container">
+                <div class="problems-content">
+                    <h2 class="section-title">Traditional Grocery Supply Chain Problems</h2>
+                    <div class="problems-list">
+                        <div class="problem-item">
+                            <div class="problem-icon"><i class="fas fa-times"></i></div>
+                            <h3 class="problem-title">Overstocking</h3>
+                            <p class="problem-description">Leads to spoilage and markdowns, resulting in revenue loss and environmental impact.</p>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon"><i class="fas fa-times"></i></div>
+                            <h3 class="problem-title">Understocking</h3>
+                            <p class="problem-description">Results in lost sales opportunities and decreased customer satisfaction.</p>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon"><i class="fas fa-times"></i></div>
+                            <h3 class="problem-title">Manual Decision-Making</h3>
+                            <p class="problem-description">Reactive and inefficient, unable to process complex data patterns at scale.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="problems-image" style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fresh produce in grocery store">
+                    <div class="waste-badge">
+                        <div class="waste-value">$1.2T</div>
+                        <div class="waste-label">Annual food waste globally</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How Jiva Works</h2>
+            <p class="section-subtitle">Our integrated, modular system of AI agents works together to optimize every aspect of perishable inventory management.</p>
+            
+            <div class="process">
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="process-title">Demand Forecasting</h3>
+                        <p class="process-description">Our AI forecasts short-term demand using advanced models like XGBoost, accounting for seasonality, local events, and weather patterns.</p>
+                        <div class="process-metrics">
+                            <div>94% accuracy</div>
+                            <span>•</span>
+                            <div>Real-time updates</div>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3 class="process-title">Trend Analysis</h3>
+                        <p class="process-description">Analyzes purchasing trends and behavioral patterns to predict future customer demands across various product categories.</p>
+                        <div class="process-metrics">
+                            <div>Customer behavior insights</div>
+                            <span>•</span>
+                            <div>Pattern recognition</div>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="process-title">Inventory Optimization</h3>
+                        <p class="process-description">Dynamically optimizes inventory routing decisions based on availability, distance, cost, and shelf-life constraints.</p>
+                        <div class="process-metrics">
+                            <div>28% inventory efficiency</div>
+                            <span>•</span>
+                            <div>Reduced transit time</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-grid" style="margin-top: 30px;">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="process-title">Time Slot Optimization</h3>
+                        <p class="process-description">Suggests optimal delivery and restocking time slots to maximize freshness and minimize disruption to store operations.</p>
+                        <div class="process-metrics">
+                            <div>15% labor efficiency</div>
+                            <span>•</span>
+                            <div>Improved customer experience</div>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="process-title">Decision Verification</h3>
+                        <p class="process-description">A control agent verifies all decisions using multiple validation methods, ensuring robust and reliable recommendations.</p>
+                        <div class="process-metrics">
+                            <div>99.7% reliability</div>
+                            <span>•</span>
+                            <div>Continuous learning</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-subtitle">Our comprehensive AI system provides end-to-end solutions for perishable inventory management.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Predictive Analytics</h3>
+                    <p class="feature-description">Advanced algorithms predict demand patterns with high accuracy, reducing guesswork in inventory planning.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h3 class="feature-title">Seasonal Adaptation</h3>
+                    <p class="feature-description">Automatically adjusts forecasts based on seasonal patterns, holidays, and local events.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3 class="feature-title">Weather Integration</h3>
+                    <p class="feature-description">Incorporates weather forecasts to anticipate changes in shopping patterns and product demand.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3 class="feature-title">Dynamic Routing</h3>
+                    <p class="feature-description">Optimizes delivery routes based on product shelf-life, distance, and demand urgency.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="feature-title">Real-time Alerts</h3>
+                    <p class="feature-description">Instant notifications about inventory issues, demand spikes, or potential shortages.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="feature-title">Performance Dashboard</h3>
+                    <p class="feature-description">Comprehensive analytics dashboard showing inventory performance, waste reduction, and cost savings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">Benefits for Grocery Chains</h2>
+            <p class="section-subtitle">Jiva delivers measurable results that impact your bottom line and sustainability goals.</p>
+            
+            <div class="benefits-container">
+                <div class="benefits-image">
+                    <img src="https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Well-stocked produce section">
+                </div>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                        <h3 class="benefit-title">Reduced Food Waste</h3>
+                        <p class="benefit-description">Cut waste by 30% by accurately predicting demand and optimizing inventory levels for perishable goods.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                        <h3 class="benefit-title">Increased Profit Margins</h3>
+                        <p class="benefit-description">Improve margins by 25% through reduced markdowns, optimized purchasing, and better inventory management.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                        <h3 class="benefit-title">Enhanced Customer Satisfaction</h3>
+                        <p class="benefit-description">Keep shelves stocked with fresh products that customers want, improving their shopping experience and loyalty.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                        <h3 class="benefit-title">Sustainability Impact</h3>
+                        <p class="benefit-description">Meet environmental goals by reducing waste, optimizing logistics, and lowering your carbon footprint.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                        <h3 class="benefit-title">Operational Efficiency</h3>
+                        <p class="benefit-description">Streamline operations with automated decision-making, reducing manual work and human error.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="demo">
+        <div class="container">
+            <h2>Ready to Transform Your Grocery Operations?</h2>
+            <p>Schedule a demo today and see how Jiva can help reduce waste, increase profits, and improve customer satisfaction.</p>
+            <a href="#contact" class="btn btn-white">Request Demo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">J</div>
+                        Jiva-ai
+                    </div>
+                    <p class="footer-tagline">AI-powered decision systems for perishable inventory in grocery chains.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Whitepapers</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            info@jiva-ai.com
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            +1 (555) 555-5555
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            123 Innovation Way,<br>
+                            San Francisco, CA 94107
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Jiva-ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
