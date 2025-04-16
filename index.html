@@ -743,11 +743,11 @@
         .delay-600 { animation-delay: 0.6s; }
         .delay-800 { animation-delay: 0.8s; }
         
-        /* Scroll animations */
+        /* Animation transitions for smoother repeating animations */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
         .animate-on-scroll.animated {
@@ -757,6 +757,7 @@
         
         .animate-on-scroll.from-left {
             transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
         .animate-on-scroll.from-left.animated {
@@ -765,6 +766,7 @@
         
         .animate-on-scroll.from-right {
             transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
         .animate-on-scroll.from-right.animated {
@@ -773,6 +775,7 @@
         
         .animate-on-scroll.from-bottom {
             transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
         .animate-on-scroll.from-bottom.animated {
@@ -1337,14 +1340,13 @@
             // Create observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // Only add the animation class if the element is entering from below
-                    // This prevents re-animation when scrolling back up
-                    if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
-                        // Add animated class to trigger animation
+                    // Add or remove the animated class based on visibility
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('animated');
-                        // Stop observing after animation is triggered
-                        observer.unobserve(entry.target);
+                    } else {
+                        entry.target.classList.remove('animated');
                     }
+                    // Don't unobserve - keep watching for scroll events
                 });
             }, observerOptions);
             
