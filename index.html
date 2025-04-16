@@ -1,4 +1,74 @@
-<!DOCTYPE html>
+<div class="features-grid">
+                <div class="feature-card animate-on-scroll from-bottom">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Predictive Analytics</h3>
+                    <p class="feature-description">Advanced algorithms predict demand patterns with high accuracy, reducing guesswork in inventory planning.</p>
+                </div>
+                <div class="feature-card animate-on-scroll from-bottom delay-200">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h3 class="feature-title">Seasonal Adaptation</h3>
+                    <p class="feature-description">Automatically adjusts forecasts based on seasonal patterns, holidays, and local events.</p>
+                </div>
+                <div class="feature-card animate-on-scroll from-bottom delay-400">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3 class="feature-title">Weather Integration</h3>
+                    <p class="feature-description">Incorporates weather forecasts to anticipate changes in shopping patterns and product demand.</p>
+                </div>
+                <div class="feature-card animate-on-scroll from-bottom">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3 class="feature-title">Dynamic Routing</h3>
+                    <p class="feature-description">Optimizes delivery routes based on product shelf-life, distance, and demand urgency.</p>
+                </div>
+                <div class="feature-card animate-on-scroll from-bottom delay-200">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="feature-title">Real-time Alerts</h3>
+                    <p class="feature-description">Instant notifications about inventory issues, demand spikes, or potential shortages.</p>
+                </div>
+                <div class="feature-card animate-on-scroll from-bottom delay-400">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="feature-title">Performance Dashboard</h3>
+                    <p class="feature-description">Comprehensive analytics dashboard showing inventory performance, waste reduction, and cost savings.</p>
+                </div>
+            </div>
+                        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .problems-container,
+            .benefits-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .problems-image,
+            .benefits-image {
+                margin-top: 40px;
+            }
+        }    <!-- CTA Section -->
+    <section class="cta" id="demo">
+        <div class="container">
+            <h2 class="animate-on-scroll">Ready to Transform Your Grocery Operations?</h2>
+            <p class="animate-on-scroll delay-200">Schedule a demo today and see how Jiva can help reduce waste, increase profits, and improve customer satisfaction.</p>
+            <a href="#contact" class="btn btn-white animate-on-scroll delay-400 animate-pulse">Request Demo</a>
+        </div>
+    </section><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -638,25 +708,92 @@
             font-size: 14px;
         }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 40px;
-            }
-            
-            .section-title {
-                font-size: 30px;
-            }
-            
-            .problems-container,
-            .benefits-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .problems-image,
-            .benefits-image {
-                margin-top: 40px;
-            }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInFromRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInFromBottom {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .animate-slide-left {
+            animation: slideInFromLeft 1s ease-out;
+        }
+        
+        .animate-slide-right {
+            animation: slideInFromRight 1s ease-out;
+        }
+        
+        .animate-slide-up {
+            animation: slideInFromBottom 1s ease-out;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Delayed animations */
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-800 { animation-delay: 0.8s; }
+        
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .from-left {
+            transform: translateX(-50px);
+        }
+        
+        .from-left.animated {
+            transform: translateX(0);
+        }
+        
+        .from-right {
+            transform: translateX(50px);
+        }
+        
+        .from-right.animated {
+            transform: translateX(0);
+        }
+        
+        .from-bottom {
+            transform: translateY(50px);
+        }
+        
+        .from-bottom.animated {
+            transform: translateY(0);
         }
         
         @media (max-width: 768px) {
@@ -733,12 +870,12 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content animate-slide-left">
                 <h1>AI-Powered Decision Systems for Perishable Inventory</h1>
                 <p>Reduce waste, optimize inventory, and increase profitability with Jiva's intelligent supply chain solutions for grocery chains.</p>
                 <div class="hero-buttons">
-                    <a href="#demo" class="btn btn-white">Request a Demo</a>
-                    <a href="#how-it-works" class="btn btn-outline-white">Learn How It Works</a>
+                    <a href="#demo" class="btn btn-white animate-fade-in delay-400">Request a Demo</a>
+                    <a href="#how-it-works" class="btn btn-outline-white animate-fade-in delay-600">Learn How It Works</a>
                 </div>
             </div>
         </div>
@@ -748,17 +885,17 @@
     <section class="stats">
         <div class="container">
             <div class="stats-container">
-                <div class="stat-card">
+                <div class="stat-card animate-on-scroll animate-fade-in">
                     <div class="stat-value">30%</div>
                     <div class="stat-label">Reduction in Food Waste</div>
                     <p class="stat-description">Our AI system helps grocers significantly reduce waste from perishable goods.</p>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card animate-on-scroll animate-fade-in delay-200">
                     <div class="stat-value">25%</div>
                     <div class="stat-label">Increased Profit Margins</div>
                     <p class="stat-description">Optimize inventory to maximize sales while reducing markdowns and waste.</p>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card animate-on-scroll animate-fade-in delay-400">
                     <div class="stat-value">94%</div>
                     <div class="stat-label">Prediction Accuracy</div>
                     <p class="stat-description">Our multi-agent AI system provides highly accurate demand forecasting.</p>
@@ -770,8 +907,8 @@
     <!-- Vision Section -->
     <section class="vision">
         <div class="container">
-            <h2 class="section-title">Our Vision</h2>
-            <p class="section-subtitle">To be the AI brain for grocery operations, enabling real-time decision-making that drastically reduces food waste, improves inventory routing, and enhances profitability—particularly for perishable goods.</p>
+            <h2 class="section-title animate-on-scroll">Our Vision</h2>
+            <p class="section-subtitle animate-on-scroll delay-200">To be the AI brain for grocery operations, enabling real-time decision-making that drastically reduces food waste, improves inventory routing, and enhances profitability—particularly for perishable goods.</p>
         </div>
     </section>
 
@@ -780,26 +917,26 @@
         <div class="container">
             <div class="problems-container">
                 <div class="problems-content">
-                    <h2 class="section-title">Traditional Grocery Supply Chain Problems</h2>
+                    <h2 class="section-title animate-on-scroll from-left">Traditional Grocery Supply Chain Problems</h2>
                     <div class="problems-list">
-                        <div class="problem-item">
+                        <div class="problem-item animate-on-scroll from-left">
                             <div class="problem-icon"><i class="fas fa-times"></i></div>
                             <h3 class="problem-title">Overstocking</h3>
                             <p class="problem-description">Leads to spoilage and markdowns, resulting in revenue loss and environmental impact.</p>
                         </div>
-                        <div class="problem-item">
+                        <div class="problem-item animate-on-scroll from-left delay-200">
                             <div class="problem-icon"><i class="fas fa-times"></i></div>
                             <h3 class="problem-title">Understocking</h3>
                             <p class="problem-description">Results in lost sales opportunities and decreased customer satisfaction.</p>
                         </div>
-                        <div class="problem-item">
+                        <div class="problem-item animate-on-scroll from-left delay-400">
                             <div class="problem-icon"><i class="fas fa-times"></i></div>
                             <h3 class="problem-title">Manual Decision-Making</h3>
                             <p class="problem-description">Reactive and inefficient, unable to process complex data patterns at scale.</p>
                         </div>
                     </div>
                 </div>
-                <div class="problems-image" style="position: relative;">
+                <div class="problems-image animate-on-scroll from-right" style="position: relative;">
                     <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fresh produce in grocery store">
                     <div class="waste-badge">
                         <div class="waste-value">$1.2T</div>
@@ -813,12 +950,12 @@
     <!-- How It Works Section -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <h2 class="section-title">How Jiva Works</h2>
-            <p class="section-subtitle">Our integrated, modular system of AI agents works together to optimize every aspect of perishable inventory management.</p>
+            <h2 class="section-title animate-on-scroll">How Jiva Works</h2>
+            <p class="section-subtitle animate-on-scroll delay-200">Our integrated, modular system of AI agents works together to optimize every aspect of perishable inventory management.</p>
             
             <div class="process">
                 <div class="process-grid">
-                    <div class="process-card">
+                    <div class="process-card animate-on-scroll from-bottom">
                         <div class="process-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
@@ -830,7 +967,7 @@
                             <div>Real-time updates</div>
                         </div>
                     </div>
-                    <div class="process-card">
+                    <div class="process-card animate-on-scroll from-bottom delay-200">
                         <div class="process-icon">
                             <i class="fas fa-clipboard-list"></i>
                         </div>
@@ -842,7 +979,7 @@
                             <div>Pattern recognition</div>
                         </div>
                     </div>
-                    <div class="process-card">
+                    <div class="process-card animate-on-scroll from-bottom delay-400">
                         <div class="process-icon">
                             <i class="fas fa-clock"></i>
                         </div>
@@ -889,8 +1026,8 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title">Key Features</h2>
-            <p class="section-subtitle">Our comprehensive AI system provides end-to-end solutions for perishable inventory management.</p>
+            <h2 class="section-title animate-on-scroll">Key Features</h2>
+            <p class="section-subtitle animate-on-scroll delay-200">Our comprehensive AI system provides end-to-end solutions for perishable inventory management.</p>
             
             <div class="features-grid">
                 <div class="feature-card">
@@ -942,35 +1079,35 @@
     <!-- Benefits Section -->
     <section class="benefits" id="benefits">
         <div class="container">
-            <h2 class="section-title">Benefits for Grocery Chains</h2>
-            <p class="section-subtitle">Jiva delivers measurable results that impact your bottom line and sustainability goals.</p>
+            <h2 class="section-title animate-on-scroll">Benefits for Grocery Chains</h2>
+            <p class="section-subtitle animate-on-scroll delay-200">Jiva delivers measurable results that impact your bottom line and sustainability goals.</p>
             
             <div class="benefits-container">
                 <div class="benefits-image">
                     <img src="https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Well-stocked produce section">
                 </div>
                 <div class="benefits-list">
-                    <div class="benefit-item">
+                    <div class="benefit-item animate-on-scroll from-left">
                         <div class="benefit-icon"><i class="fas fa-check"></i></div>
                         <h3 class="benefit-title">Reduced Food Waste</h3>
                         <p class="benefit-description">Cut waste by 30% by accurately predicting demand and optimizing inventory levels for perishable goods.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item animate-on-scroll from-left delay-200">
                         <div class="benefit-icon"><i class="fas fa-check"></i></div>
                         <h3 class="benefit-title">Increased Profit Margins</h3>
                         <p class="benefit-description">Improve margins by 25% through reduced markdowns, optimized purchasing, and better inventory management.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item animate-on-scroll from-left delay-400">
                         <div class="benefit-icon"><i class="fas fa-check"></i></div>
                         <h3 class="benefit-title">Enhanced Customer Satisfaction</h3>
                         <p class="benefit-description">Keep shelves stocked with fresh products that customers want, improving their shopping experience and loyalty.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item animate-on-scroll from-left delay-600">
                         <div class="benefit-icon"><i class="fas fa-check"></i></div>
                         <h3 class="benefit-title">Sustainability Impact</h3>
                         <p class="benefit-description">Meet environmental goals by reducing waste, optimizing logistics, and lowering your carbon footprint.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item animate-on-scroll from-left delay-800">
                         <div class="benefit-icon"><i class="fas fa-check"></i></div>
                         <h3 class="benefit-title">Operational Efficiency</h3>
                         <p class="benefit-description">Streamline operations with automated decision-making, reducing manual work and human error.</p>
@@ -989,69 +1126,38 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
-            <div class="footer-container">
-                <div>
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">J</div>
-                        Jiva-ai
-                    </div>
-                    <p class="footer-tagline">AI-powered decision systems for perishable inventory in grocery chains.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Partners</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Whitepapers</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Documentation</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Contact</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            info@jiva-ai.com
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            +1 (555) 555-5555
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            123 Innovation Way,<br>
-                            San Francisco, CA 94107
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <h2 class="section-title animate-on-scroll">Get in Touch</h2>
+            <p class="section-subtitle animate-on-scroll delay-200">Interested in learning how Jiva-ai can transform your grocery operations? Fill out the form below and we'll get back to you shortly.</p>
             
-            <div class="footer-bottom">
-                <p>&copy; 2025 Jiva-ai. All rights reserved.</p>
-            </div>
+            <form class="contact-form animate-on-scroll from-bottom delay-400" id="contactForm" onsubmit="return submitContactForm(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company" placeholder="Your Company">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your needs" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitButton">Send Message</button>
+                <div id="formStatus" style="margin-top: 15px; display: none;"></div>
+            </form>
         </div>
-    </footer>
+    </section>
 
     <script>
         // Smooth scrolling for navigation
@@ -1062,6 +1168,108 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // Contact form submission
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Disable submit button and show loading state
+            const submitButton = document.getElementById('submitButton');
+            const formStatus = document.getElementById('formStatus');
+            submitButton.disabled = true;
+            submitButton.innerText = 'Sending...';
+            formStatus.style.display = 'block';
+            formStatus.innerHTML = '<p style="color: #64748b;">Processing your request...</p>';
+            
+            // Simulate form submission (replace with actual form submission)
+            setTimeout(() => {
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Show success message
+                formStatus.innerHTML = '<p style="color: #10b981; font-weight: 500;">Thank you for your message! We\'ll be in touch soon.</p>';
+                submitButton.innerText = 'Send Message';
+                submitButton.disabled = false;
+                
+                // Log form data (remove in production)
+                console.log({
+                    name,
+                    email,
+                    company,
+                    phone,
+                    message
+                });
+                
+                // For actual form submission, use fetch or XMLHttpRequest to send data to server
+                // Example:
+                /*
+                fetch('https://your-form-endpoint.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, company, phone, message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    formStatus.innerHTML = '<p style="color: #10b981; font-weight: 500;">Thank you for your message! We\'ll be in touch soon.</p>';
+                })
+                .catch(error => {
+                    formStatus.innerHTML = '<p style="color: #dc2626; font-weight: 500;">Sorry, there was an error submitting the form. Please try again.</p>';
+                })
+                .finally(() => {
+                    submitButton.innerText = 'Send Message';
+                    submitButton.disabled = false;
+                });
+                */
+            }, 1500);
+            
+            return false;
+        }
+
+        // "Request Demo" button functionality
+        document.querySelectorAll('a[href="#demo"], a[href="#contact"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // If this is a demo request button
+                if (this.innerText.includes('Demo')) {
+                    // Pre-fill the subject in the contact form
+                    setTimeout(() => {
+                        if (document.getElementById('message')) {
+                            document.getElementById('message').value = 'I would like to request a demo of Jiva-ai.';
+                            document.getElementById('name').focus();
+                        }
+                    }, 500);
+                }
+            });
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add intersection observer for animations
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
             });
         });
     </script>
