@@ -1,4 +1,98 @@
-<!DOCTYPE html>
+<!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <style>
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1000;
+            position: absolute;
+            top: 25px;
+            right: 20px;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary);
+            border-radius: 3px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        
+        .mobile-menu-active .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .mobile-menu-active .mobile-menu-toggle span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-active .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .mobile-menu-active .nav-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+            
+            .navbar {
+                position: relative;
+            }
+        }
+    </style>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navBar = document.querySelector('.navbar');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navBar.classList.toggle('mobile-menu-active');
+                });
+                
+                // Close menu when clicking on a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navBar.classList.remove('mobile-menu-active');
+                    });
+                });
+            }
+        });
+    </script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -814,6 +908,7 @@
             }
         }
         
+        /* Improved Mobile Responsiveness */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -821,44 +916,150 @@
             }
             
             .nav-links {
-                margin-top: 20px;
+                margin: 10px 0;
                 justify-content: center;
                 flex-wrap: wrap;
+                gap: 15px;
             }
             
             .nav-links li {
-                margin: 0 15px 10px;
+                margin: 0 10px 10px;
             }
             
             .cta-buttons {
-                margin-top: 20px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                gap: 10px;
             }
             
             .hero h1 {
                 font-size: 32px;
+                line-height: 1.3;
             }
             
             .hero p {
                 font-size: 18px;
             }
             
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .section-subtitle {
+                font-size: 18px;
+            }
+            
             .stat-value {
                 font-size: 36px;
+            }
+            
+            .stat-card, 
+            .feature-card, 
+            .process-card {
+                padding: 20px;
+            }
+            
+            .problems-container,
+            .benefits-container {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .problems-image,
+            .benefits-image {
+                margin-top: 30px;
+                order: 2; /* Move images below content on mobile */
+            }
+            
+            .problems-content,
+            .benefits-list {
+                order: 1; /* Keep content on top for mobile */
+            }
+            
+            /* Improve footer layout on mobile */
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-logo {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .contact-info li {
+                justify-content: center;
+            }
+            
+            .contact-info i {
+                margin-right: 10px;
             }
         }
         
         @media (max-width: 576px) {
-            .hero-buttons,
-            .cta-buttons {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero-buttons {
                 flex-direction: column;
+                width: 100%;
             }
             
             .btn {
                 width: 100%;
+                margin-bottom: 10px;
+                text-align: center;
             }
             
-            .process-grid {
-                grid-template-columns: 1fr;
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta {
+                padding: 60px 0;
+            }
+            
+            .cta h2 {
+                font-size: 28px;
+            }
+            
+            .stats, 
+            .vision, 
+            .problems, 
+            .how-it-works,
+            .features,
+            .benefits,
+            .contact {
+                padding: 50px 0;
+            }
+            
+            .feature-icon,
+            .process-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            /* Fix form elements on small screens */
+            .form-group input,
+            .form-group textarea {
+                padding: 10px;
+            }
+            
+            /* Ensure waste badge doesn't overflow on mobile */
+            .waste-badge {
+                right: 10px;
+                bottom: 10px;
+                padding: 10px;
             }
         }
     </style>
@@ -872,6 +1073,11 @@
                     <div class="logo-icon">J</div>
                     Jiva-ai
                 </a>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <ul class="nav-links">
                     <li><a href="#how-it-works">How It Works</a></li>
                     <li><a href="#features">Features</a></li>
