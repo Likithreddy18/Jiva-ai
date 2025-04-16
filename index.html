@@ -1,4 +1,13 @@
-<div class="features-grid">
+/* Z-index fixes for animations */
+        .section-title, .section-subtitle {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .animate-on-scroll {
+            position: relative;
+            z-index: 1;
+        }            <div class="features-grid">
                 <div class="feature-card animate-on-scroll from-bottom">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
@@ -764,6 +773,7 @@
         /* Scroll animations */
         .animate-on-scroll {
             opacity: 0;
+            transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
         
@@ -772,27 +782,27 @@
             transform: translateY(0);
         }
         
-        .from-left {
+        .animate-on-scroll.from-left {
             transform: translateX(-50px);
         }
         
-        .from-left.animated {
+        .animate-on-scroll.from-left.animated {
             transform: translateX(0);
         }
         
-        .from-right {
+        .animate-on-scroll.from-right {
             transform: translateX(50px);
         }
         
-        .from-right.animated {
+        .animate-on-scroll.from-right.animated {
             transform: translateX(0);
         }
         
-        .from-bottom {
+        .animate-on-scroll.from-bottom {
             transform: translateY(50px);
         }
         
-        .from-bottom.animated {
+        .animate-on-scroll.from-bottom.animated {
             transform: translateY(0);
         }
         
@@ -870,9 +880,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content animate-slide-left">
-                <h1>AI-Powered Decision Systems for Perishable Inventory</h1>
-                <p>Reduce waste, optimize inventory, and increase profitability with Jiva's intelligent supply chain solutions for grocery chains.</p>
+            <div class="hero-content">
+                <h1 class="animate-fade-in">AI-Powered Decision Systems for Perishable Inventory</h1>
+                <p class="animate-fade-in delay-200">Reduce waste, optimize inventory, and increase profitability with Jiva's intelligent supply chain solutions for grocery chains.</p>
                 <div class="hero-buttons">
                     <a href="#demo" class="btn btn-white animate-fade-in delay-400">Request a Demo</a>
                     <a href="#how-it-works" class="btn btn-outline-white animate-fade-in delay-600">Learn How It Works</a>
@@ -885,21 +895,23 @@
     <section class="stats">
         <div class="container">
             <div class="stats-container">
-                <div class="stat-card animate-on-scroll animate-fade-in">
+                <div class="stats-container">
+                <div class="stat-card animate-on-scroll">
                     <div class="stat-value">30%</div>
                     <div class="stat-label">Reduction in Food Waste</div>
                     <p class="stat-description">Our AI system helps grocers significantly reduce waste from perishable goods.</p>
                 </div>
-                <div class="stat-card animate-on-scroll animate-fade-in delay-200">
+                <div class="stat-card animate-on-scroll delay-200">
                     <div class="stat-value">25%</div>
                     <div class="stat-label">Increased Profit Margins</div>
                     <p class="stat-description">Optimize inventory to maximize sales while reducing markdowns and waste.</p>
                 </div>
-                <div class="stat-card animate-on-scroll animate-fade-in delay-400">
+                <div class="stat-card animate-on-scroll delay-400">
                     <div class="stat-value">94%</div>
                     <div class="stat-label">Prediction Accuracy</div>
                     <p class="stat-description">Our multi-agent AI system provides highly accurate demand forecasting.</p>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -1129,10 +1141,10 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Get in Touch</h2>
-            <p class="section-subtitle animate-on-scroll delay-200">Interested in learning how Jiva-ai can transform your grocery operations? Fill out the form below and we'll get back to you shortly.</p>
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Interested in learning how Jiva-ai can transform your grocery operations? Fill out the form below and we'll get back to you shortly.</p>
             
-            <form class="contact-form animate-on-scroll from-bottom delay-400" id="contactForm" onsubmit="return submitContactForm(event)">
+            <form class="contact-form" id="contactForm" onsubmit="return submitContactForm(event)">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -1257,20 +1269,41 @@
             // Add intersection observer for animations
             const animatedElements = document.querySelectorAll('.animate-on-scroll');
             
+            // Create options for the observer
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of the element must be visible
+            };
+            
+            // Create observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    // Only add the animation class if the element is entering from below
+                    // This prevents re-animation when scrolling back up
+                    if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
+                        // Add animated class to trigger animation
                         entry.target.classList.add('animated');
+                        // Stop observing after animation is triggered
                         observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                threshold: 0.1
-            });
+            }, observerOptions);
             
+            // Start observing all elements with animate-on-scroll class
             animatedElements.forEach(element => {
                 observer.observe(element);
             });
+            
+            // Ensure animations in the visible part of the screen play on load
+            setTimeout(() => {
+                document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        element.classList.add('animated');
+                    }
+                });
+            }, 100);
         });
     </script>
 </body>
